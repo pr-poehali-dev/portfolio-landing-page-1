@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 261 80% 74%;
+    --primary: 142 69% 58%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -22,7 +22,7 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 261 80% 94%;
+    --accent: 142 69% 58%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -30,7 +30,7 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 261 80% 74%;
+    --ring: 142 69% 58%;
 
     --radius: 0.5rem;
 
@@ -61,7 +61,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 261 80% 74%;
+    --primary: 142 69% 58%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -101,5 +101,55 @@
 
   html {
     scroll-behavior: smooth;
+  }
+}
+
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  animation: glitch-animation 3s infinite linear alternate-reverse;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  left: 1px;
+  text-shadow: -1px 0 #00ff00;
+}
+
+.glitch-text::after {
+  animation: glitch-animation 2s infinite linear alternate-reverse;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  left: -1px;
+  text-shadow: 1px 0 #00ff00;
+}
+
+@keyframes glitch-animation {
+  0% {
+    transform: translateX(0);
+  }
+  80% {
+    transform: translateX(0);
+  }
+  85% {
+    transform: translateX(-1px);
+  }
+  90% {
+    transform: translateX(1px);
+  }
+  95% {
+    transform: translateX(-1px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
